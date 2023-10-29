@@ -3,7 +3,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 WORKDIR /app
 COPY . .
 ENV PORT 80
-ENV TEXT "n/a"
+ENV TEXT ""
 ENV COLOR ""
 ENV HOSTNAME false
 ENV DEBUG false

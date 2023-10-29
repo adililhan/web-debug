@@ -3,7 +3,7 @@
 ## Available Environment Variables
 
 ##### ***PORT***&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> Default: `80`
-##### ***TEXT***&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> Default: `"n/a"` (It means print nothing)
+##### ***TEXT***&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> Default: `""` (It means print "Hello World!") [If the value is **"n/a"** nothing will be printed]
 ##### ***COLOR***&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> Default: `""` (Available values: `red`, `blue`, `green`, `yellow`)
 ##### ***HOSTNAME***&nbsp;-> Default: `false`
 ##### ***DEBUG***&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-> Default `false` (Prints the `$_SERVER` variable)
@@ -12,12 +12,16 @@
 
 `docker run -dit -e PORT=8181 -e COLOR=yellow -e TEXT="Hello from container" -e HOSTNAME=true --net=host --name web ailhan/web-debug`
 
+If you don't want to print anything:
+
+`docker run -dit -e TEXT="n/a" --name web ailhan/web-debug`
+
 
 ## Installed packages:
 
 ```
 php curl wget vim
-strace tcpdump dnsutils 
+strace tcpdump dnsutils
 jq htop git tree ncdu iproute2
 iputils-ping iputils-tracepath net-tools
 bash-completion bash
