@@ -3,6 +3,7 @@
 $text = getenv("TEXT");
 $color = getenv("COLOR");
 $hostname = getenv("HOSTNAME");
+$user_agent = $_SERVER['HTTP_USER_AGENT'];
 
 if ($color == "red") {
     echo '<style>html{ background-color:red;}</style>';
@@ -20,10 +21,16 @@ if ($color == "yellow") {
     echo '<style>html{ background-color:yellow;}</style>';
 }
 
-if ($text == "" || $text == FALSE) {
-    echo "Hello World!<br />";
+if (preg_match('/(wget|curl)/i', $user_agent)) {
+    $end_line = "\n";
+} else {
+    $end_line = "<br />";
+}
+
+if ($text == "" || $text == FALSE || $text == "false") {
+    echo "Hello World!" . "$end_line";
 } else if ($text != "n/a") {
-    echo "$text<br />";
+    echo "$text" . "$end_line";
 }
 
 if ($hostname != "false") {
@@ -42,11 +49,7 @@ function check_debug() {
         return TRUE;
     }
 
-    if ($debug == false) {
-        return FALSE;
-    }
-
-    if ($debug == "false") {
+    if ($debug == false || $debug == "false") {
         return FALSE;
     }
 
