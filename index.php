@@ -5,20 +5,10 @@ $color = getenv("COLOR");
 $hostname = getenv("HOSTNAME");
 $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
-if ($color == "red") {
-    echo '<style>html{ background-color:red;}</style>';
-}
+$colors = ["red", "blue", "green", "yellow"];
 
-if ($color == "blue") {
-    echo '<style>html{ background-color:blue;}</style>';
-}
-
-if ($color == "green") {
-    echo '<style>html{ background-color:green;}</style>';
-}
-
-if ($color == "yellow") {
-    echo '<style>html{ background-color:yellow;}</style>';
+if (in_array($color, $colors) && ! preg_match('/(wget|curl)/i', $user_agent)) {
+    echo "<style>html{ background-color:$color;}</style>";
 }
 
 if (preg_match('/(wget|curl)/i', $user_agent)) {
@@ -27,19 +17,21 @@ if (preg_match('/(wget|curl)/i', $user_agent)) {
     $end_line = "<br />";
 }
 
-if ($text == "" || $text == FALSE || $text == "false") {
+if ($text == "" || $text == "false") {
     echo "Hello World!" . "$end_line";
 } else if ($text != "n/a") {
     echo "$text" . "$end_line";
 }
 
 if ($hostname != "false") {
-    echo gethostname() . "<br />";
+    echo gethostname() . "$end_line";
 }
 
 if (check_debug()) {
-    echo '<pre>';
-    print_r($_SERVER);
+    if ( ! preg_match('/(wget|curl)/i', $user_agent)) {
+        echo '<pre>';
+    }
+    print_r ($_SERVER);
 }
 
 function check_debug() {
@@ -49,7 +41,7 @@ function check_debug() {
         return TRUE;
     }
 
-    if ($debug == false || $debug == "false") {
+    if ($debug == "false") {
         return FALSE;
     }
 
