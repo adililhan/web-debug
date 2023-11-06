@@ -7,11 +7,13 @@ $user_agent = $_SERVER['HTTP_USER_AGENT'];
 
 $colors = ["red", "blue", "green", "yellow"];
 
-if (in_array($color, $colors) && ! preg_match('/(wget|curl)/i', $user_agent)) {
+$is_cli = preg_match('/(wget|curl)/i', $user_agent);
+
+if (in_array($color, $colors) && ! $is_cli) {
     echo "<style>html{ background-color:$color;}</style>";
 }
 
-if (preg_match('/(wget|curl)/i', $user_agent)) {
+if ($is_cli) {
     $end_line = "\n";
 } else {
     $end_line = "<br />";
@@ -28,7 +30,7 @@ if ($hostname != "false") {
 }
 
 if (check_debug()) {
-    if ( ! preg_match('/(wget|curl)/i', $user_agent)) {
+    if ( ! $is_cli) {
         echo '<pre>';
     }
     print_r ($_SERVER);
