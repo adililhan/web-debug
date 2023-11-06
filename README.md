@@ -23,7 +23,7 @@ If you don't want to print anything:
 php curl wget vim
 strace tcpdump dnsutils
 jq htop git tree ncdu iproute2
-iputils-ping iputils-tracepath net-tools
+iputils-ping iputils-tracepath net-tools stress-ng
 bash-completion bash
 ```
 
