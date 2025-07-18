@@ -20,11 +20,19 @@ If you don't want to print anything:
 ## Installed packages:
 
 ```
-php curl wget vim
-strace tcpdump dnsutils
-jq htop git tree ncdu iproute2
-iputils-ping iputils-tracepath net-tools stress-ng
-bash-completion bash
+php curl wget vim strace
+net-tools tcpdump dnsutils iputils-ping iputils-tracepath
+git jq bash bash-completion htop
+tree ncdu iproute2 stress-ng apache2-utils
+bind9-dnsutils bird bridge-utils busybox conntrack
+dhcping ethtool file fping iftop
+iperf iperf3 ipset iptables iptraf-ng
+ipvsadm httpie ldnsutils liboping0 ltrace
+libcrypt-ssleay-perl libnet-ssleay-perl mtr snmp netcat-openbsd
+nftables ngrep nmap nmap-common openssl
+python3-pip python3-setuptools scapy socat speedtest-cli
+software-properties-common openssh-client tcptraceroute tshark util-linux
+zsh swaks trippy websocat
 ```
 
 ## Base Image
